@@ -70,7 +70,7 @@ resource "aws_security_group" "deen-backend-sg" {
   }
 }
 
-resource "aws_security_group" "sec_group_allow_itself" {
+resource "aws_security_group_rule" "sec_group_allow_itself" {
   type                     = "ingress"
   from_port                = 0
   to_port                  = 65535
