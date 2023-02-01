@@ -137,6 +137,6 @@ resource "aws_elastic_beanstalk_environment" "deen-bean-prod" {
     value     = aws_security_group.deen-bean-elb-sg.id
   }
 
-  depends_on = [aws_security_group.deen-bean-elb-sg,aws_security_group.deen-prod-sg]
+  depends_on = [aws_security_group.deen-bean-elb-sg, aws_security_group.deen-prod-sg]
 
 }
