@@ -1,7 +1,7 @@
 resource "aws_security_group" "deen-bean-elb-sg" {
-  name          = "deen-bean-elb-sg"
-  description   = "Security group for bean-elb"
-  vpc_id        = module.vpc.vpc_id
+  name        = "deen-bean-elb-sg"
+  description = "Security group for bean-elb"
+  vpc_id      = module.vpc.vpc_id
   egress {
     from_port   = 0
     protocol    = "-1"
@@ -35,9 +35,9 @@ resource "aws_security_group" "deen-bastion-sg" {
 }
 
 resource "aws_security_group" "deen-prod-sg" {
-  name = "deen-prod-sg"
+  name        = "deen-prod-sg"
   description = "Security group for beanstalk instances"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
   egress {
     from_port   = 0
     protocol    = "-1"
@@ -45,27 +45,27 @@ resource "aws_security_group" "deen-prod-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port = 22
-    protocol  = "tcp"
-    to_port   = 22
+    from_port       = 22
+    protocol        = "tcp"
+    to_port         = 22
     security_groups = [aws_security_group.deen-bastion-sg.id]
   }
 }
 
 resource "aws_security_group" "deen-backend-sg" {
-  name = "deen-backend-sg"
+  name        = "deen-backend-sg"
   description = "Security group for RDS, Active mq, elastic cache"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
   egress {
-    from_port = 0
-    protocol  = "-1"
-    to_port   = 0
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port = 0
-    protocol  = "-1"
-    to_port   = 0
+    from_port       = 0
+    protocol        = "-1"
+    to_port         = 0
     security_groups = [aws_security_group.deen-prod-sg.id]
   }
 }
