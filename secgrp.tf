@@ -68,6 +68,12 @@ resource "aws_security_group" "deen-backend-sg" {
     to_port         = 0
     security_groups = [aws_security_group.deen-prod-sg.id]
   }
+  ingress {
+    from_port       = 3306
+    protocol        = "tcp"
+    to_port         = 3306
+    security_groups = [aws_security_group.deen-bastion-sg.id]
+  }
 }
 
 resource "aws_security_group_rule" "sec_group_allow_itself" {
