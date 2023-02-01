@@ -10,7 +10,7 @@ resource "aws_elasticache_subnet_group" "deen-ecache-subgrp" {
   name       = "deen-ecache-subgrp"
   subnet_ids = [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]]
   tags = {
-    Name = "Subnet group from elastic cache"
+    Name = "Subnet group for elastic cache"
   }
 }
 
