@@ -1,1 +1,1 @@
-# terraform-aws-pro
+# Terraform code for AWS project
