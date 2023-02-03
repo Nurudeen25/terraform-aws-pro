@@ -18,6 +18,10 @@ resource "aws_instance" "deen-bastion" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo apt-get update",
+      "sudo apt-get upgrade -y",
+      "sudo apt-get install --reinstall mysql-server-8.0 -y",
+      "sudo service mysql status",
       "chmod +x /tmp/deen-dbdeploy.sh",
       "sudo /tmp/deen-dbdeploy.sh"
     ]
